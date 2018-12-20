@@ -7,7 +7,7 @@ pipeline {
     stage('Test') {
       steps {
         sh 'npm install'
-        sh 'npm test spec/PCString.spec.js'
+        sh 'npm test spec/*.spec.js'
       }
     }
     stage('Approve') {
