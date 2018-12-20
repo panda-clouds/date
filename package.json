@@ -9,11 +9,22 @@
     "pretest": "eslint .",
     "test": "jasmine ./spec/*.spec.js"
   },
-  "name": "pc-date",
+  "name": "@panda-clouds/date",
   "description": "A helper class for javascript date",
   "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/panda-clouds/date.git"
+
+  },
+  "author": {
+    "name": "Marc Smith",
+    "email": "mr.marcsmith@me.com",
+    "url": "https://github.com/mrmarcsmith"
+  },
+  "license": "MIT",
+  "main": "src/PCDate.js",
+  "engines": {
+    "node": ">= 8"
   }
 }

@@ -4,11 +4,21 @@ class PCDate  {
 		//Empty Constructor
 	}
 
+	static isDate(date){
+		if(!date) return false;
+		if(isNaN(date)) return false;
+		return Object.prototype.toString.call(date) === "[object Date]";
+	}
 	static dateByAddingThisManyUnits(date,number,unit){
-
+		const error = "PCDate.dateByAddingThisManyUnits() error: Please select a valid unit.";
+		if(!date) return null;
+		if(!unit) throw error;
 		unit = unit.toLowerCase();
 		var tempDate = new Date(date.getTime());
-		if(unit == "months" || unit == "month"){
+		if(unit == "years" || unit == "year"){
+			tempDate.setFullYear(date.getFullYear() + number);
+		}else if(unit == "months" || unit == "month"){
+
 			tempDate.setMonth(date.getMonth() + number);
 		}else if(unit == "weeks" || unit == "week"){
 			tempDate.setDate(date.getDate() + (number * 7));
@@ -21,7 +31,7 @@ class PCDate  {
 		}else  if(unit == "seconds" || unit == "second"){
 			tempDate.setSeconds(date.getSeconds() + number);
 		}else{
-			throw "We can't add that unit yet in dateByAddingThisManyUnits (1)";
+			throw error;
 		}
 
 		return tempDate;
