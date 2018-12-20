@@ -76,14 +76,14 @@ describe('PCDate.dateByAddingThisManyUnits', () => {
 			expect(newDate.getTime() - fixedDate.getTime()).toBe(-63072000000);
 		});
 
-		it('adds 500 years', () => {
-			const newDate = PCDate.dateByAddingThisManyUnits(fixedDate,500,"years");
-			expect(newDate.getTime() - fixedDate.getTime()).toBe(15778454400000);
+		it('adds 100 years', () => {
+			const newDate = PCDate.dateByAddingThisManyUnits(fixedDate,100,"years");
+			expect(newDate.getTime() - fixedDate.getTime()).toBe(3155673600000);
 		});
 
-		it('subtracts 500 years', () => {
-			const newDate = PCDate.dateByAddingThisManyUnits(fixedDate,-500,"years");
-			expect(newDate.getTime() - fixedDate.getTime()).toBe(-15778539102000);
+		it('subtracts 100 years', () => {
+			const newDate = PCDate.dateByAddingThisManyUnits(fixedDate,-100,"years");
+			expect(newDate.getTime() - fixedDate.getTime()).toBe(-3155760000000);
 		});
 
 		it('adds zero years', () => {
