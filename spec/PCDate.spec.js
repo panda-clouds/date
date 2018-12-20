@@ -374,7 +374,5 @@ describe('PCDate.dateByAddingThisManyUnits', () => {
 			const newDate = PCDate.dateByAddingThisManyUnits(null,1,null);
 			expect(newDate).toBe(null);
 		});
-
 	});
-
 });
