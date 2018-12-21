@@ -9,8 +9,9 @@ class PCDate  {
 		if(isNaN(date)) return false;
 		return Object.prototype.toString.call(date) === "[object Date]";
 	}
-	static dateByAddingThisManyUnits(date,number,unit){
-		const error = "PCDate.dateByAddingThisManyUnits() error: Please select a valid unit.";
+
+	static addTime(date,number,unit){
+		const error = "PCDate.addTime() error: Please select a valid unit.";
 		if(!date) return null;
 		if(!unit) throw error;
 		unit = unit.toLowerCase();
@@ -35,6 +36,10 @@ class PCDate  {
 		}
 
 		return tempDate;
+	}
+
+	static subtractTime(date,number,unit){
+		return PCDate.addTime(date,-number,unit);
 	}
 }
 
