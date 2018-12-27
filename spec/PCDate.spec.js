@@ -376,3 +376,95 @@ describe('PCDate.addTime', () => {
 		});
 	});
 });
+
+
+describe('PCDate.thisDate', () => {
+
+	it('returns PCDate object when given date as number', () => {
+		const string = 1545883207128;
+		const thisDateResult = PCDate.thisDate(string);
+		expect(thisDateResult).toBeDefined();
+		expect(thisDateResult.date).toBeDefined();
+		expect(thisDateResult.date.getTime()).toBe(1545883207128);
+	});
+
+	it('returns now when given undefined', () => {
+		const string = undefined;
+		expect(()=>{ PCDate.thisDate(string); }).toThrowError("Please pass a date object to 'thisDate'");
+	});
+
+	it('returns now when given null', () => {
+		const string = null;
+		const thisDateResult = PCDate.thisDate(string);
+		expect(thisDateResult).toBeDefined();
+		expect(thisDateResult.date).toBeDefined();
+	});
+
+	it('throws when given an object', () => {
+		const string = {};
+		expect(()=>{ PCDate.thisDate(string); }).toThrowError("Please pass a date object to 'thisDate'");
+	});
+
+	it('throws when given an array', () => {
+		const string = [];
+		expect(()=>{ PCDate.thisDate(string); }).toThrowError("Please pass a date object to 'thisDate'");
+	});
+
+	it('handles string date', () => {
+		const string = "October 13, 2014 11:13:00";
+		const thisDateResult = PCDate.thisDate(string);
+		expect(thisDateResult).toBeDefined();
+		expect(thisDateResult.date).toBeDefined();
+	});
+
+	it('handles when given a date', () => {
+		const string = new Date();
+		const thisDateResult = PCDate.thisDate(string);
+		expect(thisDateResult).toBeDefined();
+		expect(thisDateResult.date).toBeDefined();
+	});
+});
+
+describe('PCDate.thisDate(d1).isAfter(d2)', () => {
+
+	const yesterday = 1545883207128;
+	const today = 1545883207129;
+
+	it('false when d1 is Not after d2', () => {
+		const boolResults = PCDate.thisDate(yesterday).isAfter(today);
+		expect(boolResults).toBe(false);
+	});
+
+	it('true when d1 is After d2', () => {
+		const boolResults = PCDate.thisDate(today).isAfter(yesterday);
+		expect(boolResults).toBe(true);
+	});
+
+	// fringe cases
+	it('returns false when same date', () => {
+		const boolResults = PCDate.thisDate(yesterday).isAfter(yesterday);
+		expect(boolResults).toBe(false);
+	});
+});
+
+describe('PCDate.thisDate(d1).isBefore(d2)', () => {
+
+	const yesterday = 1545883207128;
+	const today = 1545883207129;
+
+	it('false when d1 is Not after d2', () => {
+		const boolResults = PCDate.thisDate(yesterday).isBefore(today);
+		expect(boolResults).toBe(true);
+	});
+
+	it('true when d1 is After d2', () => {
+		const boolResults = PCDate.thisDate(today).isBefore(yesterday);
+		expect(boolResults).toBe(false);
+	});
+
+	// fringe cases
+	it('returns false when same date', () => {
+		const boolResults = PCDate.thisDate(yesterday).isBefore(yesterday);
+		expect(boolResults).toBe(false);
+	});
+});

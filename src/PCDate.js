@@ -1,7 +1,10 @@
 
 class PCDate  {
-	constructor() {
+	constructor(date) {
 		//Empty Constructor
+		if(date){
+			this.date = date;
+		}
 	}
 
 	static isDate(date){
@@ -40,6 +43,38 @@ class PCDate  {
 
 	static subtractTime(date,number,unit){
 		return PCDate.addTime(date,-number,unit);
+	}
+
+	static _dateFromInput(date){
+		if(!(date instanceof Date)){
+			// let the native constructor handle non-date objects.
+			date = new Date(date);
+		}
+		if(!PCDate.isDate(date)) throw new Error("Please pass a date object to 'thisDate'")
+		return date;
+	}
+	static thisDate(input){
+		const date = PCDate._dateFromInput(input)
+		const object = new PCDate(date);
+		return object;
+	}
+
+	isAfter(input){
+		const date = PCDate._dateFromInput(input);
+		if(!this.date) throw new Error("Please specify a date by calling PCDate.thisDate(d1).isAfter(d2)");
+		if(this.date > date)
+			return true;
+		else
+			return false;
+	}
+
+	isBefore(input){
+		const date = PCDate._dateFromInput(input);
+		if(!this.date) throw new Error("Please specify a date by calling PCDate.thisDate(d1).isBefore(d2)");
+		if(this.date < date)
+			return true;
+		else
+			return false;
 	}
 }
 
