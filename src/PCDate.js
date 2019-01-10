@@ -13,7 +13,8 @@ class PCDate  {
 		return Object.prototype.toString.call(date) === "[object Date]";
 	}
 
-	static addTime(date,number,unit){
+	static addTime(input,number,unit){
+		const date = PCDate._dateFromInput(input)
 		const error = "PCDate.addTime() error: Please select a valid unit.";
 		if(!date) return null;
 		if(!unit) throw error;
