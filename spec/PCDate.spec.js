@@ -468,3 +468,13 @@ describe('PCDate.thisDate(d1).isBefore(d2)', () => {
 		expect(boolResults).toBe(false);
 	});
 });
+
+describe('PCDate.searchString(d)', () => {
+
+	const today = 1545883207129;
+
+	it('should fomat correctly', () => {
+		const results = PCDate.searchString(today);
+		expect(results).toBe('thursday 2018 december 26');
+	});
+});

@@ -29,7 +29,7 @@ const PCDate = require('@panda-clouds/date');
 
 // example usage
 PCDate.isDate(new Date()); // => true;
-PCDate.dateByAddingThisManyUnits(new Date(), 1, 'hour'); // => a date object that is 1 hour in the future;
+PCDate.addTime(new Date(), 1, 'hour'); // => a date object that is 1 hour in the future;
 ```
 
 You can replace PCDate with any variable.
@@ -54,7 +54,7 @@ PCDate.isDate({}) // => false
 PCDate.isDate([]) // => false
 ```
 
-### - dateByAddingThisManyUnits(date,number,unit)
+### - addTime(date,number,unit)
 
 returns a date object offset by the number and unit
 
@@ -70,9 +70,9 @@ units can be
 Example:
 
 ```javascript
-PCDate.dateByAddingThisManyUnits(new Date(), 5, 'seconds') // => 5 seconds in the future
-PCDate.dateByAddingThisManyUnits(new Date(), -3, 'hours') // => 3 hours in the past
-PCDate.dateByAddingThisManyUnits(new Date(), 1, 'week') // => 1 week in the future
+PCDate.addTime(new Date(), 5, 'seconds') // => 5 seconds in the future
+PCDate.addTime(new Date(), -3, 'hours') // => 3 hours in the past
+PCDate.addTime(new Date(), 1, 'week') // => 1 week in the future
 ```
 
 

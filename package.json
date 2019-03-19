@@ -11,11 +11,10 @@
   },
   "name": "@panda-clouds/date",
   "description": "A helper class for javascript date",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/panda-clouds/date.git"
-
   },
   "author": {
     "name": "Marc Smith",
