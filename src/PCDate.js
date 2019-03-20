@@ -1,3 +1,4 @@
+const moment = require('moment-timezone')
 
 class PCDate  {
 	constructor(date) {
@@ -78,25 +79,16 @@ class PCDate  {
 	}
 
 	// returns a string that contains the elements of the date spelled out
-	static searchString(input){
+	static searchString(input,timezone){
+		if(!timezone) {
+			timezone = 'UTC';
+		}
 
-		const date = PCDate._dateFromInput(input);
+		const tmpDate = PCDate._dateFromInput(input);
+		const date = moment(tmpDate).tz(timezone);
 
-		var weekday = new Array(7);
-		weekday[0] = 'monday';
-		weekday[1] = 'tuesday';
-		weekday[2] = 'wednesday';
-		weekday[3] = 'thursday';
-		weekday[4] = 'friday';
-		weekday[5] = 'saturday';
-		weekday[6] = 'sunday';
-
-		const fullYear = date.getFullYear();
-		const fullMonth = date.toLocaleString('en-us', { month: 'long' }).toLowerCase();
-		const day = date.getDate();
-		const dayOfWeek = weekday[date.getDay()];
 		// outputs "monday january 5 2019"
-		return dayOfWeek + ' ' + fullYear + ' ' + fullMonth + ' ' + day;
+		return date.format('dddd MMMM DD YYYY h:mma').toLowerCase();
 	}
 }
 

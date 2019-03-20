@@ -4,7 +4,9 @@
     "eslint-plugin-jasmine": "^2.10.1",
     "jasmine": "^3.1.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "moment-timezone": "^0.5.23"
+  },
   "scripts": {
     "pretest": "eslint .",
     "test": "jasmine ./spec/*.spec.js"

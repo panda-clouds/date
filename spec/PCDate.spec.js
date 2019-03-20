@@ -473,8 +473,13 @@ describe('PCDate.searchString(d)', () => {
 
 	const today = 1545883207129;
 
-	it('should fomat correctly', () => {
+	it('should fomat correctly without timezone', () => {
 		const results = PCDate.searchString(today);
-		expect(results).toBe('thursday 2018 december 26');
+		expect(results).toBe('thursday december 27 2018 4:00am');
+	});
+
+	it('should fomat correctly with timezone', () => {
+		const results = PCDate.searchString(today, 'America/Phoenix');
+		expect(results).toBe('wednesday december 26 2018 9:00pm');
 	});
 });
